@@ -18,17 +18,16 @@
       </div>
     </div><!-- /.navbar-collapse -->
   </nav>
+
 <%= yield %>
+
 <footer>
-<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
-
-    <a href="http://localhost:3000/terms">Terms</a>
+    <hr>
+    <%= link_to "About", about_path %>
     |
-
-
+    <%= link_to "Terms", terms_path %>
   </div>
-</nav>
 </footer>
 
 </body>
