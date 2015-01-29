@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Gcamp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Gcamp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 <body>
-
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-
-
         <a class="navbar-brand" href="#">gCamp</a>
       </div>
     </div><!-- /.navbar-collapse -->
@@ -28,16 +25,12 @@
     |
     <%= link_to "Terms", terms_path %>
 
-
-
     <%=link_to image_tag("galvanize.png", class:"img-responsive small"), "http://students.gschool.it/students/284" %>
     <%=link_to image_tag("Twitter.png", class:"img-responsive small"), "http://twitter.com/jenehumphrey" %>
     <%=link_to image_tag("GitHub.png", class:"img-responsive small"), "http://github.com/JenniferHumphrey" %>
     <%=link_to image_tag("linked_in.jpg", class:"img-responsive small"), "http://www.linkedin.com/in/jenniferehumphrey" %>
 
   </div>
-
 </footer>
-
 </body>
 </html>
