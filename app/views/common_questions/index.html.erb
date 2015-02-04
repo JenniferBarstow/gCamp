@@ -1,0 +1,29 @@
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Frequently Asked Questions</h1>
+  </div>
+
+  <ul>
+    <li><u><%= link_to "What is gCamp", faq_path %></u></li>
+    <li><u><%= link_to "How do I join gCamp?", faq_path %></u></li>
+    <li><u><%= link_to "When will gCamp be finished?", faq_path %></u></li>
+  </ul>
+
+<p><h3><%=@questions_array[0]["question"] %></h3></p>
+<p class><%=@questions_array[0]["answer"] %></p>
+
+<u><%= link_to "top", faq_path %></u>
+
+<p><h3><%=@questions_array[1]["question"] %></h3></p>
+<p class><%=@questions_array[1]["answer"] %></p>
+
+<u><%= link_to "top", faq_path %></u>
+
+<p><h3><%=@questions_array[2]["question"] %></h3></p>
+<p class><%=@questions_array[2]["answer"] %></p>
+
+<u><%= link_to "top", faq_path %></u>
+
+</div>
