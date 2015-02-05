@@ -6,8 +6,6 @@ class WelcomeController < ApplicationController
       {'quote' => '"Before gCamp I was a disorderly slob. Now I\'m more organized than I\'ve ever been."',
           'contributor' => 'Leta Jaskolski'},
       {'quote' => '"Don\'t hesitate - sign up right now! You\'ll never be the same"',
-          'contributor' => 'Lavern Upton'}
-      ]
-
+          'contributor' => 'Lavern Upton'} ]
   end
 end

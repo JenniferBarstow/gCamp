@@ -6,24 +6,17 @@
   </div>
 
   <ul>
-    <li><u><%= link_to "What is gCamp", faq_path %></u></li>
-    <li><u><%= link_to "How do I join gCamp?", faq_path %></u></li>
-    <li><u><%= link_to "When will gCamp be finished?", faq_path %></u></li>
-  </ul>
+    <% @questions_array.each do |faq| %>
+      <li><%= link_to faq.question, :anchor =>faq.slug%></li>
+        <% end %>
 
-<p><h3><%=@questions_array[0]["question"] %></h3></p>
-<p class><%=@questions_array[0]["answer"] %></p>
+  <% @questions_array.each do |faq| %>
+    <h3 id = <%= faq.slug %>>
+      <%= faq.question %>
+    </h3>
+    <p><%= faq.answer %></p>
+    <a href = "#">top</a>
+  <% end %>
 
-<u><%= link_to "top", faq_path %></u>
-
-<p><h3><%=@questions_array[1]["question"] %></h3></p>
-<p class><%=@questions_array[1]["answer"] %></p>
-
-<u><%= link_to "top", faq_path %></u>
-
-<p><h3><%=@questions_array[2]["question"] %></h3></p>
-<p class><%=@questions_array[2]["answer"] %></p>
-
-<u><%= link_to "top", faq_path %></u>
 
 </div>
