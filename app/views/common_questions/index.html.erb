@@ -9,6 +9,7 @@
     <% @questions_array.each do |faq| %>
       <li><%= link_to faq.question, :anchor =>faq.slug%></li>
         <% end %>
+  </ul>
 
   <% @questions_array.each do |faq| %>
     <h3 id = <%= faq.slug %>>
