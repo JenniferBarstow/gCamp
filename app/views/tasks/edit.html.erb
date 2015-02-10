@@ -1,0 +1,16 @@
+
+  <h1>Editing Tasks</h1>
+
+<%= form_for @task, url: task_path(@task), method: :patch do |f| %>
+  <div>
+    <%= f.label :description %>
+    <p><%= f.text_field :description %></p>
+  </div>
+
+<%= f.submit "Update task!" %>
+<br>
+
+<%= link_to "Show", task_path  %>
+<%= link_to "Back", edit_task_path(@task) %>
+
+<% end %>
