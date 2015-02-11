@@ -2,24 +2,32 @@
   <div class="pull-right">
     <%= link_to 'New Task', new_task_path(@task), class:"btn btn-info" %>
   </div>
-
   <h1>Tasks</h1>
 </div>
 
-  <h3>Description</h3>
 
-
-<% @tasks.each do |task| %>
 <table class="table">
-  <tr>
-    <td>
-      <%= link_to task.description, task_path(task) %>
-    </td>
-    <td class = "text-right">
-  <%= link_to 'Edit',edit_task_path(task), class: "btn btn-info" %>
-  <%= link_to 'Destroy', task_path(task), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+
+      <td><strong>Description</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <% @tasks.each do |task| %>
+
+    <tr>
+      <td>
+        <%= link_to task.description, task_path(task) %>
+      </td>
+      <td class = "text-right">
+        <%= link_to 'Edit',edit_task_path(task), class: "btn btn-info" %>
+        <%= link_to 'Destroy', task_path(task), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 
