@@ -1,11 +1,10 @@
-
-  <h1>Editing Tasks</h1>
+<h1>Editing Tasks</h1>
 
 <%= form_for @task, url: task_path(@task), method: :patch do |f| %>
-  <div>
-    <%= f.label :description %>
-    <p><%= f.text_field :description %></p>
-  </div>
+<div>
+  <%= f.label :description %>
+  <p><%= f.text_field :description %></p>
+</div>
 
 <%= f.submit "Update task!" %>
 <br>
