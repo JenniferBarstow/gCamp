@@ -5,3 +5,4 @@
   <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
   <li class="active"><%= @task.description %></li>
 </ol>
+<%= link_to 'edit',edit_tasks_path, class: "btn btn-default" %>

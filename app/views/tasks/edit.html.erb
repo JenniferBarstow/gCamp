@@ -1,15 +1,8 @@
 <h1>Editing Tasks</h1>
 
-<%= form_for @task, url: task_path(@task), method: :patch do |f| %>
-<div>
-  <%= f.label :description %>
-  <p><%= f.text_field :description %></p>
-</div>
+<ol class="breadcrumb">
+  <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
+  <li class="active">Edit Task</li>
+</ol>
 
-<%= f.submit "Update task!" %>
-<br>
-
-<%= link_to "Show", task_path  %>
-<%= link_to "Back", edit_task_path(@task) %>
-
-<% end %>
+<%= render "form" %>
