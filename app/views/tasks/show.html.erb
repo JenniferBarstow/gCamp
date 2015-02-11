@@ -1,5 +1,7 @@
-<h1><%= @task.description %></h1>
+<h1><%= @task.description.titleize %></h1>
 <br>
 <p></p>
-<%= link_to 'Edit', edit_task_path(@task) %>
-<%= link_to 'Back', tasks_path(@task) %>
+<ol class="breadcrumb">
+  <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
+  <li class="active"><%= @task.description %></li>
+</ol>
