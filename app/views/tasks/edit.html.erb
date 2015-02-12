@@ -2,7 +2,8 @@
 
 <ol class="breadcrumb">
   <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
+  <li><%= link_to @task.description, task_path(@task) %></li>
   <li class="active">Edit Task</li>
 </ol>
 
-<%= render "form" %>
+<%= render partial: "form", locals: {name_of_button: "Update Task" } %>

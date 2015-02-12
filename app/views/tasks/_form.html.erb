@@ -2,17 +2,26 @@
 
 <div class="form-group">
   <div class = "col-md-2">
-  <%= f.label :description, class: "control-label" %>
-</div>
-<div class ="col-md-4">
-  <%= f.text_field :description, class: "form-control" %>
-</div>
+    <%= f.label :description, class: "control-label" %>
+  </div>
+  <div class ="col-md-4">
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
 </div>
 
+<% unless @task.new_record? %>
+  <div class="form-group">
+    <div class="col-md-10 col-md-offset-2">
+    <%= f.check_box :complete %>
+    <%= f.label :complete, "Complete" %>
+    </div>
+  </div>
+  <% end %>
+
 <div class="form-group">
-<div class="col-md-10 col-md-offset-2">
-<%= f.submit class: "btn btn-primary" %>
-<%= link_to 'cancel',tasks_path, class: "btn btn-default" %>
-</div>
+  <div class="col-md-10 col-md-offset-2">
+    <%= f.submit name_of_button, class: "btn btn-primary" %>
+    <%= link_to 'cancel',tasks_path, class: "btn btn-default" %>
+  </div>
 </div>
 <% end %>

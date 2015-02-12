@@ -30,7 +30,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to tasks_path
+      flash[:notice] = "Task was successfully updated"
+      redirect_to @task
     else
     render :edit
     end
@@ -46,7 +47,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :complete)
   end
 
 end
