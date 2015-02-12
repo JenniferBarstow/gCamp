@@ -1,20 +1,17 @@
+<div class="page-header">
+  <h1>Frequently Asked Questions</h1>
+</div>
 
-
-
-  <div class="page-header">
-    <h1>Frequently Asked Questions</h1>
-  </div>
-
-  <ul>
-    <% @questions_array.each do |faq| %>
-      <li><%= link_to faq.question, :anchor =>faq.slug%></li>
-        <% end %>
-  </ul>
-
+<ul>
   <% @questions_array.each do |faq| %>
-    <h3 id = <%= faq.slug %>>
-      <%= faq.question %>
-    </h3>
-    <p><%= faq.answer %></p>
-    <a href = "#">top</a>
+  <li><%= link_to faq.question, :anchor =>faq.slug%></li>
   <% end %>
+</ul>
+
+<% @questions_array.each do |faq| %>
+<h3 id = <%= faq.slug %>>
+  <%= faq.question %>
+</h3>
+<p><%= faq.answer %></p>
+<a href = "#">top</a>
+<% end %>
