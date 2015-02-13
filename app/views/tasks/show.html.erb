@@ -17,3 +17,8 @@
   <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
   <li class="active"><%= @task.description %></li>
 </ol>
+
+<strong>Due On</strong>:
+<% if @task.due_date %>
+  <%= @task.due_date.strftime("%m/%d/%Y") %>
+<% end %>
