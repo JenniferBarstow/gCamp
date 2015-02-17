@@ -33,7 +33,7 @@ class TasksController < ApplicationController
       flash[:notice] = "Task was successfully updated"
       redirect_to @task
     else
-    render :edit
+      render :edit
     end
   end
 
@@ -43,11 +43,9 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-
   private
 
   def task_params
     params.require(:task).permit(:description, :complete, :due_date)
   end
-
 end

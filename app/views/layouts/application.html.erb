@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Gcamp</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+<head>
+  <title>Gcamp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-
       <div class="navbar-header">
         <a class="navbar-brand" href="#">gCamp</a>
       </div>
@@ -17,32 +16,31 @@
   </nav>
   <div class = "container">
 
-  <% if flash[:notice] %>
-  <div class="alert alert-success text-center"><%= flash[:notice]%>
-  </div>
-  <% end %>
+    <% if flash[:notice] %>
+    <div class="alert alert-success text-center"><%= flash[:notice]%>
+    </div>
+    <% end %>
 
-<%= yield %>
+    <%= yield %>
 
-<footer>
+    <footer>
+      <hr>
+      <%= link_to "About", about_path %>
+      |
+      <%= link_to "Terms", terms_path %>
+      |
+      <%= link_to "FAQ", faq_path %>
+      |
+      <%= link_to "Tasks", tasks_path %>
+      |
+      <%= link_to "Users", users_path %>
 
-    <hr>
-    <%= link_to "About", about_path %>
-    |
-    <%= link_to "Terms", terms_path %>
-    |
-    <%= link_to "FAQ", faq_path %>
-    |
-    <%= link_to "Tasks", tasks_path %>
-    |
-    <%= link_to "Users", users_path %>
+      <%=link_to image_tag("galvanize.png", class:"img-responsive small"), "http://students.gschool.it/students/284" %>
+      <%=link_to image_tag("Twitter.png", class:"img-responsive small"), "http://twitter.com/jenehumphrey" %>
+      <%=link_to image_tag("GitHub.png", class:"img-responsive small"), "http://github.com/JenniferHumphrey" %>
+      <%=link_to image_tag("linked_in.jpg", class:"img-responsive small"), "http://www.linkedin.com/in/jenniferehumphrey" %>
 
-    <%=link_to image_tag("galvanize.png", class:"img-responsive small"), "http://students.gschool.it/students/284" %>
-    <%=link_to image_tag("Twitter.png", class:"img-responsive small"), "http://twitter.com/jenehumphrey" %>
-    <%=link_to image_tag("GitHub.png", class:"img-responsive small"), "http://github.com/JenniferHumphrey" %>
-    <%=link_to image_tag("linked_in.jpg", class:"img-responsive small"), "http://www.linkedin.com/in/jenniferehumphrey" %>
-
-  </div>
-</footer>
+    </div>
+  </footer>
 </body>
 </html>
