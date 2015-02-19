@@ -9,12 +9,14 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-      if @project.save
-        redirect_to project_path
-      else
-        render :new
-      end
+    if @project.save
+      flash[:notice] = "Project was successfully created"
+      redirect_to @project
+    else
+      @project = Project.new(project_params)
+      render :new
     end
+  end
 
     def show
       @project = Project.find(params[:id])
