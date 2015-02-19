@@ -1,17 +1,16 @@
-<div class="page-header">
-  <div class="pull-right">
-    <%= link_to 'Edit', edit_task_path(@task), class:"btn btn-info" %>
-  </div>
+<h1>
+  <div class="page-header">
+    <% if @task.complete %>
+      <s><%=@task.description.titleize %></s>
+    <% else %>
+      <%= @task.description %>
+    <% end %>
 
-  <div>
-  <h1>
-  <% if @task.complete %>
-  <s><%=@task.description.titleize %></s>
-  <% else %>
-  <%= @task.description %>
-  <% end %>
-  </h1>
-</div>
+    <%= link_to 'Edit', edit_task_path(@task), class:"btn btn-info pull-right" %>
+  </div>
+</h1>
+
+
 
 <ol class="breadcrumb">
   <li><%= link_to "Tasks", tasks_path(@tasks)  %></li>
