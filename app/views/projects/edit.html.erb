@@ -1,9 +1,0 @@
-<h1>Editing Projects</h1>
-
-<ol class="breadcrumb">
-  <li><%= link_to "Projects", projects_path(@projects)  %></li>
-  <li><%= link_to @project.description, projects_path(@project) %></li>
-  <li class="active">Edit Project</li>
-</ol>
-
-<%= render partial: "form", locals: {name_of_button: "Update Project" } %>
