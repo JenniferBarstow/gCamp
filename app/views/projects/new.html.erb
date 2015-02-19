@@ -1,0 +1,10 @@
+<div class="page-header">
+  <p><h2>New Project</h2></p>
+</div>
+
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", projects_path(@projects)  %></li>
+  <li class="active">New Project</li>
+</ol>
+
+<%= render partial: "form", locals: {name_of_button: "Create Project" } %>
