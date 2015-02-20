@@ -1,5 +1,8 @@
 .page-header
   .pull-right
-    = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete
     = link_to 'Edit', edit_project_path(@project), class: 'btn btn-info'
+    = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete
+
   %h1= @project.name
+
+  = render partial: "form", locals: {name_of_button: "Update Project" }
