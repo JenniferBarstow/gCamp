@@ -1,4 +1,5 @@
 .page-header
   .pull-right
   %h1 Edit Project
+= render partial: "shared/errors", locals: {object: @project}
 = render partial: "form", locals: {name_of_button: "Update Project" }
