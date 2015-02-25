@@ -29,8 +29,8 @@ describe "the user interacting with: task crud" do
 
     click_on "Delete"
 
-    expect(page).to_not have_content "hike"
-    expect(page).to_not have_content "02/02/2015"
+    expect(page).to_not have_content "hike!"
+    expect(page).to_not have_content "05/04/2015"
 
   end
 end
