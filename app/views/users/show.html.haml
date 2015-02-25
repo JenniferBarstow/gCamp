@@ -1,9 +1,10 @@
-.page-header
-  .pull-right
-    = link_to 'Edit', edit_user_path(@user), class:"btn btn-info"
-  %h1
-    = @user.first_name
-    = @user.last_name
+%h1
+  .page-header
+    .pull-right
+      = link_to 'Edit', edit_user_path(@user), class:"btn btn-info"
+    %h1
+      = @user.first_name
+      = @user.last_name
 %dl.dl-horizontal
   %dt
     First Name
