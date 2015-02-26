@@ -5,5 +5,5 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create
   - bundle exec rake db:migrate
-  script:
+script:
     - bundle exec rake spec
