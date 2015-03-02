@@ -13,6 +13,11 @@
     .container
       - if flash[:notice]
         .alert.alert-success.text-center= flash[:notice]
+          = flash[:notice]
+      - if flash [:warning]
+        .alert.alert-danger
+          = flash[:warning]
+          
       = yield
       %footer
         %hr/
