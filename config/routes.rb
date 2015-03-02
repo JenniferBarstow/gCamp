@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+
+  get 'terms/',   to: 'terms#index'
+  get 'about/',   to: 'terms#about_page'
+  get 'faq/'  ,   to: 'common_questions#index'
+  get 'sign-up',  to: 'registrations#new'
+  post 'sign-up', to: 'registrations#create'
+  get 'sign-out', to: 'authentication#destroy'
+  get 'sign-in',  to: 'authentication#new'
+  post'sign-in',  to: 'authentication#create'
+
   resources :tasks
   resources :users
   resources :projects
-
-   get '/terms' => 'terms#index'
-   get '/about' => 'about#index'
-   get '/faq' => 'common_questions#index'
-   #get '/tasks' => 'tasks#index'
-   get '/sign-up', to: 'registrations#new'
-   post '/sign-up', to: 'registrations#create'
-   get '/sign-in', to: 'authentication#new'
-   post '/sign-in', to: 'authentication#create'
-   get '/sign-out', to: 'authentication#destroy'
  end
