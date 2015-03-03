@@ -1,36 +1,43 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe "the user interacting with: task crud" do
-  it "is complete" do
-    visit tasks_path
-    expect(page).to have_content "Tasks"
 
-    click_on "New Task"
+feature 'Tasks CRUD' do
+ scenario 'Users can see tasks list with description and due date and create new task' do
+   sign_in_user
 
-    fill_in "Description", with: "hike"
-    fill_in "Due date", with: "02/03/2015"
 
-    click_on "Create Task"
+    errand = Task.new(description: "errands", due_date: Date.today)
+    errand.save!
 
-    expect(page).to have_content "hike"
-    expect(page).to have_content "03/02/2015"
+   visit tasks_path
+   expect(page).to have_content "errands"
+   expect(page).to have_content Date.today.strftime("%m/%d/%Y")
 
-    click_on "Edit"
+   click_link 'New Task'
 
-    fill_in "Description", with: "hike!"
-    fill_in "Due date", with: "04/05/2015"
-    check "Complete"
-    click_on "Update Task"
+   expect(page).to have_content "New Task"
+   fill_in "Description", with: "Run errands"
+   fill_in :task_due_date, with: "02/03/2015"
+   click_button 'Create Task'
+ end
 
-    expect(page).to have_content "hike!"
-    expect(page).to have_content "05/04/2015"
+   scenario 'User can edit tasks' do
+     sign_in_user
+   errand = Task.new(description: "errands", due_date: Date.today)
+   errand.save!
 
-    visit tasks_path
+   visit edit_task_path(errand)
+   fill_in :task_description, with: "run errrands"
+   fill_in :task_due_date, with: "02/04/2015"
+   click_button 'Update Task'
 
-    click_on "Delete"
+ end
 
-    expect(page).to_not have_content "hike!"
-    expect(page).to_not have_content "05/04/2015"
+ scenario 'display error messages and validate task fields' do
+   sign_in_user
+   visit new_task_path
 
-  end
-end
+   click_button 'Create Task'
+   expect(page).to have_content "1 error prohibited this form from being saved:"
+ end
+ end
