@@ -1,6 +1,6 @@
 .page-header
   .pull-right
-    = link_to 'New Task', new_task_path, class:'btn btn-info'
+    = link_to 'New Task', new_project_task_path(@project), class:'btn btn-info'
   %h1 Tasks
 %table.table
   %thead
@@ -12,7 +12,7 @@
       %tr
         - if task.complete
           %td.col-md-1
-            %s= link_to task.description,task_path(task)
+            %s= link_to task.description, project_task_path(task)
         - else
           %td.col-md-1= link_to task.description, task_path(task)
         %td.col-md-2= task.due_date.try(:strftime, "%m/%d/%Y")
