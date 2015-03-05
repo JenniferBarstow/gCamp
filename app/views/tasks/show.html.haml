@@ -4,9 +4,11 @@
       %s= @task.description.titleize
     - else
       = @task.description
-    = link_to 'Edit', edit_task_path(@task), class:"btn btn-info pull-right"
+    = link_to 'Edit', edit_project_task_path(@project, @task), class:"btn btn-info pull-right"
 %ol.breadcrumb
-  %li= link_to "Tasks", tasks_path(@tasks)
+  %li= link_to "Projects", projects_path
+  %li= link_to @project.name, project_path(@project)
+  %li= link_to "Tasks", project_tasks_path(@project)
   %li.active= @task.description
 - if @task.due_date
   = succeed ":" do

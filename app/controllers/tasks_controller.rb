@@ -12,12 +12,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = @project.tasks.new(task_params)
-    if task.save
+    @task = @project.tasks.new(task_params)
+    if @task.save
       flash[:notice] = "Task was successfully created"
       redirect_to project_task_path(@project, @task)
     else
-      @task = task
       render :new
     end
   end
