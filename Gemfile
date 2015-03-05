@@ -38,8 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'capybara'
+  gem 'rspec-rails', '~> 3.2.1'
+   gem 'capybara', '~> 2.4.4'
   gem 'launchy'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
