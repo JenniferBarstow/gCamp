@@ -1,4 +1,8 @@
 class TasksController < ApplicationController
+  before_action do
+    @project = Project.find(params[:task_id])
+  end
+
   def index
     @tasks = Task.all
   end
