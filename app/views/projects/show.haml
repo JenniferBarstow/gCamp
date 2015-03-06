@@ -7,8 +7,7 @@
     = @project.name
 %ol.breadcrumb
   %li= link_to "Projects", projects_path
-  %li= link_to @project.name, project_path(@project)
-  %li.active Tasks
+  %li.active= @project.name
 %table.table
   %thead
     %tr

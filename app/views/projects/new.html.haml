@@ -1,4 +1,7 @@
 .page-header
   %h1 New Project
+%ol.breadcrumb
+  %li= link_to "Projects", projects_path
+  %li.active New Project
 = render partial: "shared/errors", locals: {object: @project}
 = render partial: "form", locals: {name_of_button: "Create Project" }
