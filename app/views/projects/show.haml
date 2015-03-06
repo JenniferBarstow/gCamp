@@ -5,4 +5,4 @@
       = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete
 
     = @project.name
-= link_to "Tasks", project_tasks_path(@project)
+= link_to pluralize(@project.tasks.count,"Task"), project_tasks_path(@project)
