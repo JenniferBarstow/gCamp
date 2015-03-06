@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = @project.tasks.new
+    @task = Task.new(:project_id => @project.id)
   end
 
   def create
@@ -51,8 +51,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:description, :complete, :due_date)
-    params.require(:task).permit(:description, :complete, :due_date, :project_id)
+    params.require(:task).permit(:description, :complete, :due_date).merge(:project_id => @project.id)
   end
 
   def set_task
