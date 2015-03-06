@@ -8,9 +8,8 @@ feature 'Projects CRUD' do
 
     project = Project.new(name: "Super Cool Project")
     project.save!
-
-   visit projects_path
-   expect(page).to have_content "Super Cool Project"
+    visit projects_path
+    expect(page).to have_content "Super Cool Project"
 
 
    click_link 'New Project'
@@ -38,4 +37,4 @@ feature 'Projects CRUD' do
    click_button 'Create Project'
    expect(page).to have_content "1 error prohibited this form from being saved:"
  end
- end
+end

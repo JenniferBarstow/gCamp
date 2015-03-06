@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
-  before_action do
-    @project = Project.find(params[:project_id])
-  end
+  before_action :set_task, only: [:show, :edit, :update]
+  before_action :ensure_current_user
+
+  before_action :find_and_set_project
 
   def index
     @tasks = @project.tasks
@@ -43,6 +44,7 @@ class TasksController < ApplicationController
   def destroy
     task = @project.tasks.find(params[:id])
     task.destroy
+    flash[:notice] = "Task was successfully deleted"
     redirect_to project_tasks_path(@project)
   end
 
@@ -50,5 +52,14 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:description, :complete, :due_date)
+    params.require(:task).permit(:description, :complete, :due_date, :project_id)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  def find_and_set_project
+    @project = Project.find(params[:project_id])
   end
 end
