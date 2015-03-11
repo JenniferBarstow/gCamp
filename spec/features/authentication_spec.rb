@@ -19,7 +19,7 @@ feature 'should be able to sign in' do
     end
   end
 
-  scenario 'should see an error if signing in with bad information' do
+  scenario 'should see an error if signing in with incorrect data' do
     visit root_path
     click_on 'Sign In'
     fill_in 'Email', with: 'invalid@nope.com'
