@@ -30,7 +30,7 @@ feature 'Tasks CRUD' do
    expect(page).to have_content 'hike more!'
 
 
-   click_on 'Delete'
+   first('.glyphicon-remove').click
    expect(page).to_not have_content 'hike more!'
    expect(page).to have_content 'Task was successfully deleted'
 
@@ -43,7 +43,7 @@ feature 'Tasks CRUD' do
 
  scenario 'display error messages and validate task fields' do
    sign_in_user
-   
+
    project = create_project
 
    visit new_project_task_path(project)
