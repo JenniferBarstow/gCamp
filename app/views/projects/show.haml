@@ -12,5 +12,5 @@
 
 .well
   %h3 Delete
-  %p= "Deleting this project will also delete #{pluralize(@project.memberships.count, "Membership")}, #{pluralize(@project.tasks.count, "Task")} and associated comments."
+  %p= "Deleting this project will also delete #{pluralize(@project.memberships.count, "membership")}, #{pluralize(@project.tasks.count, "task")} and associated comments."
   = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete, data:{confirm: 'Are you sure?'}
