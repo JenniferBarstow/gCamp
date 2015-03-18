@@ -2,7 +2,7 @@
     User.create!({
       first_name: 'luke',
       last_name: 'skywalker',
-      email: 'luke@skywalker.com',
+      email: "luke#{rand(5000)+1}@skywalker.com",
       password: '1234',
       password_confirmation: '1234'
     }.merge(options))
@@ -14,10 +14,24 @@
     }.merge(options))
   end
 
-  def create_task(project, options = {})
+  def create_task(options = {})
     Task.create!({
       description: 'Test task for a project',
-      project_id: project.id,
+      project_id: 1,
       complete: true,
+    }.merge(options))
+  end
+
+  def create_comment(options = {})
+    Comment.create!({
+      description: 'Test comment'
+    }.merge(options))
+  end
+
+  def create_membership(options = {})
+    Membership.create!({
+      role: 'Test role',
+      project_id: create_project.id,
+      user_id: create_user.id
     }.merge(options))
   end
