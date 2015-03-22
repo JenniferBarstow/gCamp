@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < PrivateController
 
   def index
     @users = User.all
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
   end

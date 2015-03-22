@@ -1,0 +1,17 @@
+%head
+  %title Gcamp
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+%body
+  = render 'layouts/private_nav'
+  .container
+    - if flash[:notice]
+      .alert.alert-success
+        = flash[:notice]
+    - if flash[:warning]
+      .alert.alert-danger
+        = flash[:warning]
+    = yield
+
+  = render 'layouts/private_footer'
