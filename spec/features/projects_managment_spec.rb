@@ -10,6 +10,9 @@ feature 'Projects CRUD' do
     project.save!
     visit projects_path
     expect(page).to have_content "Super Cool Project"
+    within '.dropdown-menu'  do
+      click_on 'New Project'
+    end
 
 
    click_link 'New Project'

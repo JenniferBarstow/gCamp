@@ -15,6 +15,7 @@ class ProjectsController < PrivateController
         redirect_to project_tasks_path(project)
         flash[:success] = "Project was successfully created"
       else
+        @project = project
         render :new
       end
     end
