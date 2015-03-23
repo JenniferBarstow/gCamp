@@ -1,5 +1,7 @@
 class MembershipsController < PrivateController
   before_action :find_and_set_project
+  before_action :set_membership, only: [:update, :destroy]
+  before_action :verify_min_one_owner, only: [:update, :destroy]
 
   def index
     @membership = @project.memberships.new
@@ -43,5 +45,17 @@ class MembershipsController < PrivateController
   def find_and_set_project
     @project = Project.find(params[:project_id])
   end
+
+  def set_membership
+   @membership = Membership.find(params[:id])
+ end
+
+ def verify_min_one_owner
+   @membership = Membership.find(params[:id])
+   if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count <= 1
+     flash[:error] = "Projects must have at least one owner"
+     redirect_to project_memberships_path(@membership.project_id)
+   end
+ end
 
 end
