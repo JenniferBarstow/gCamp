@@ -9,14 +9,15 @@ class ProjectsController < PrivateController
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      flash[:notice] = "Project was successfully created"
-      redirect_to project_path(@project)
-    else
-      render :new
+      project = Project.new(project_params)
+      if project.save
+        membership = project.memberships.create!(user_id: current_user.id, role: "Owner")
+        redirect_to project_tasks_path(project)
+        flash[:success] = "Project was successfully created"
+      else
+        render :new
+      end
     end
-  end
 
     def show
       @project = Project.find(params[:id])
