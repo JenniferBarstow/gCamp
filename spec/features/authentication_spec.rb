@@ -38,7 +38,7 @@ feature 'should be able to sign in' do
     within '.form' do
       click_on 'Sign In'
     end
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(projects_path)
   end
 
 end

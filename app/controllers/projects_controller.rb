@@ -1,7 +1,7 @@
 class ProjectsController < PrivateController
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
   end
 
   def new
