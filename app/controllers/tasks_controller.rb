@@ -1,7 +1,14 @@
 class TasksController < PrivateController
 
   before_action :set_task, only: [:show, :edit, :update]
-  before_action :find_and_set_project
+  before_action do
+    @project = Project.find(params[:project_id])
+
+    if !@project.users.pluck(:id).include?(current_user.id)
+      flash[:warning] = "You do not have access to that project"
+      redirect_to projects_path
+    end
+  end
 
   def index
     @tasks = @project.tasks
@@ -59,7 +66,4 @@ class TasksController < PrivateController
     @task = Task.find(params[:id])
   end
 
-  def find_and_set_project
-    @project = Project.find(params[:project_id])
-  end
 end
