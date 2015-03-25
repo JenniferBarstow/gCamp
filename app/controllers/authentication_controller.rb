@@ -20,5 +20,4 @@ class AuthenticationController < ApplicationController
       render :new
     end
   end
-
 end

@@ -47,15 +47,14 @@ class MembershipsController < PrivateController
   end
 
   def set_membership
-   @membership = Membership.find(params[:id])
- end
+    @membership = Membership.find(params[:id])
+  end
 
- def verify_min_one_owner
-   @membership = Membership.find(params[:id])
-   if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count <= 1
-     flash[:error] = "Projects must have at least one owner"
-     redirect_to project_memberships_path(@membership.project_id)
-   end
- end
-
+  def verify_min_one_owner
+    @membership = Membership.find(params[:id])
+    if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count <= 1
+      flash[:error] = "Projects must have at least one owner"
+      redirect_to project_memberships_path(@membership.project_id)
+    end
+  end
 end

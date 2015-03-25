@@ -1,7 +1,8 @@
 %h1
   .page-header
     .pull-right
-      = link_to 'Edit', edit_project_path(@project), class: 'btn btn-info'
+      - if @project.owner?(current_user)
+        = link_to 'Edit', edit_project_path(@project), class: 'btn btn-info'
     = @project.name
 %ol.breadcrumb
   %li= link_to "Projects", projects_path
@@ -10,7 +11,8 @@
 %p= link_to pluralize(@project.tasks.count,"Task"), project_tasks_path(@project)
 %p= link_to pluralize(@project.memberships.count,"Membership"), project_memberships_path(@project)
 
-.well
-  %h3 Delete
-  %p= "Deleting this project will also delete #{pluralize(@project.memberships.count, "membership")}, #{pluralize(@project.tasks.count, "task")} and associated comments."
-  = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete, data:{confirm: 'Are you sure?'}
+- if @project.owner?(current_user)
+  .well
+    %h3 Delete
+    %p= "Deleting this project will also delete #{pluralize(@project.memberships.count, "membership")}, #{pluralize(@project.tasks.count, "task")} and associated comments."
+    = link_to 'Delete', project_path(@project),class: 'btn btn-danger', method: :delete, data:{confirm: 'Are you sure?'}
