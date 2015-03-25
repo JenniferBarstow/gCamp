@@ -66,3 +66,16 @@ feature "projects can only be managed by project owners" do
     expect(page).to have_content("You do not have access")
   end
 end
+
+feature "memberships can only be seen by project members" do
+  scenario "non member of project is redirect to projects path when trying to view memberships" do
+    project = create_project
+    user = create_user
+    sign_in_user(user)
+
+    visit project_memberships_path(project)
+
+    expect(page).to have_content "You do not have access to that project"
+    expect(current_path).to eq projects_path
+  end
+end

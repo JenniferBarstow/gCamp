@@ -1,7 +1,7 @@
 %h1
   .page-header
     .pull-right
-      - if @project.owner?(current_user)
+      - if @project.is_owner?(current_user)
         = link_to 'Edit', edit_project_path(@project), class: 'btn btn-info'
     = @project.name
 %ol.breadcrumb
@@ -11,7 +11,7 @@
 %p= link_to pluralize(@project.tasks.count,"Task"), project_tasks_path(@project)
 %p= link_to pluralize(@project.memberships.count,"Membership"), project_memberships_path(@project)
 
-- if @project.owner?(current_user)
+- if @project.is_owner?(current_user)
   .well
     %h3 Delete
     %p= "Deleting this project will also delete #{pluralize(@project.memberships.count, "membership")}, #{pluralize(@project.tasks.count, "task")} and associated comments."

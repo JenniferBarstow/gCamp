@@ -54,7 +54,7 @@ class ProjectsController < PrivateController
 
   def ensure_project_owner
     project = Project.find(params[:id])
-    unless project.owner?(current_user)
+    unless project.is_owner?(current_user)
       flash[:warning] = "You do not have access"
       redirect_to project_path(project)
     end
