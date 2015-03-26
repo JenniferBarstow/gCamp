@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :projects, through: :memberships
   has_many :comments, dependent: :nullify
 
+  def admin_or_owner?(project)
+    self.memberships.find_by(project_id: project.id) != nil && self.memberships.find_by(project_id: project.id).role == 'Owner'
+  end
 
   def full_name
     "#{first_name} #{last_name}"
