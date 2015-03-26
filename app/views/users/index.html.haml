@@ -13,4 +13,5 @@
         %td.col-md-1= link_to user.full_name ,user_path(user)
         %td.col-md-1= mail_to user.email.downcase
         %td.col-md-2.text-right
-          = link_to 'Edit', edit_user_path(user)
+          - if user.id == current_user.id
+            = link_to 'Edit', edit_user_path(user)
