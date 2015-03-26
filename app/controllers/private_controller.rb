@@ -18,4 +18,15 @@ class PrivateController < ApplicationController
       redirect_to project_path(@project)
     end
   end
+
+  def is_user_or_admin?(user)
+    user == current_user 
+  end
+
+
+  def current_user_not_permitted_access
+    if !is_user_or_admin?(@user)
+      render file: 'public/404.html', status: :not_found, layout: false
+    end
+  end
 end

@@ -1,4 +1,5 @@
 class UsersController < PrivateController
+  before_action :current_user_not_permitted_access, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
