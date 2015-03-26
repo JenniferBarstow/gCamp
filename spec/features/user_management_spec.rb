@@ -25,12 +25,13 @@ feature 'Users CRUD' do
    click_button 'Create User'
  end
 
-   scenario 'User can edit users' do
-     sign_in_user
-   user = User.new(first_name: "John", last_name: "Smith", email: "john@smith.com", password: "password", password_confirmation: "password" )
-   user.save!
+ scenario 'User can edit their own user ' do
+   sign_in_user
 
-   visit edit_user_path(user)
+   visit users_path
+
+   click_on "Edit"
+
    fill_in :user_first_name, with: "Johnny"
    fill_in :user_last_name, with: "Bravo"
    fill_in :user_email, with: "johnny@bravo.com"
@@ -48,4 +49,4 @@ feature 'Users CRUD' do
    click_button 'Create User'
    expect(page).to have_content "4 errors prohibited this form from being saved:"
  end
- end
+end
