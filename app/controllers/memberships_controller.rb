@@ -3,6 +3,7 @@ class MembershipsController < PrivateController
   before_action :set_membership, only: [:update, :destroy]
   before_action :verify_min_one_owner, only: [:update, :destroy]
   before_action :ensure_membership
+  before_action :ensure_admin_owner_or_self, only:[:destroy]
 
   def index
     @membership = @project.memberships.new
@@ -20,10 +21,10 @@ class MembershipsController < PrivateController
   end
 
   def update
-    membership = Membership.find(params[:id])
-    if membership.update(membership_params)
-      flash[:notice] = "#{membership.user.full_name} was successfully updated"
-      redirect_to project_memberships_path(membership.project_id)
+    # membership = Membership.find(params[:id])
+    if @membership.update(membership_params)
+      flash[:notice] = "#{@membership.user.full_name} was successfully updated"
+      redirect_to project_memberships_path(@membership.project_id)
     else
       @membership = membership
       render :index

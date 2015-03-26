@@ -68,7 +68,7 @@ feature "projects can only be managed by project owners" do
 end
 
 feature "memberships can only be seen by project members" do
-  scenario "non member of project is redirect to projects path when trying to view memberships" do
+  scenario "non member of project is redirected to projects path when trying to view memberships" do
     project = create_project
     user = create_user
     sign_in_user(user)
