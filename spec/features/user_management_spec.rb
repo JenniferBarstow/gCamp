@@ -12,7 +12,6 @@ feature 'Users CRUD' do
 
    visit users_path
    expect(page).to have_content "Steve H"
-   expect(page).to have_content "steve@gmail.com"
 
    click_link 'New User'
 
