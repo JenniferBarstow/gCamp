@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def is_project_member?(user)
+    user.projects.map(&:users).flatten.include?(self)
+  end
+
 end
