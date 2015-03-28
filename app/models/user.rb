@@ -19,8 +19,12 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def is_project_member?(user)
-    user.projects.map(&:users).flatten.include?(self)
+  def admin_or_member(project)
+    self.admin || self.memberships.find_by(project_id: project.id) != nil
   end
 
+
+  def is_project_member?
+    self.memberships.find_by(project_id: project.id) != nil
+  end
 end

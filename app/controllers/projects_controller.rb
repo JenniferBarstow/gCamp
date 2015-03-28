@@ -1,4 +1,6 @@
 class ProjectsController < PrivateController
+  before_action :set_project, only:[:show, :edit, :update, :destroy]
+  before_action :is_project_member_or_admin?, only: [:show, :update, :destroy]
   before_action :ensure_project_owner, only: [:edit, :destroy, :update]
 
   def index
@@ -22,15 +24,12 @@ class ProjectsController < PrivateController
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update(project_params)
       flash[:notice] = "Project was successfully updated"
       redirect_to project_path(@project)
@@ -40,8 +39,7 @@ class ProjectsController < PrivateController
   end
 
   def destroy
-    project = Project.find(params[:id])
-    if project.destroy
+    if @project.destroy
       flash[:notice] = "Project was successfully deleted"
     redirect_to projects_path
     end
@@ -52,11 +50,22 @@ class ProjectsController < PrivateController
     params.require(:project).permit(:name)
   end
 
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
   def ensure_project_owner
     project = Project.find(params[:id])
     unless project.is_owner?(current_user)
       flash[:warning] = "You do not have access"
       redirect_to project_path(project)
+    end
+  end
+
+  def is_project_member_or_admin?
+    if !current_user.admin_or_member(@project)
+      flash[:warning] = "You do not have access to that project"
+      redirect_to projects_path
     end
   end
 end

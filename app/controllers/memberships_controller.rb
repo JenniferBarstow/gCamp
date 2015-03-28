@@ -12,7 +12,7 @@ class MembershipsController < PrivateController
     membership = @project.memberships.new(membership_params)
     if membership.save
       flash[:notice] = "#{membership.user.full_name} was successfully added"
-      redirect_to project_memberships_path(membership.project_id)
+      redirect_to project_memberships_path(@project)
     else
       @membership = membership
       render :index
@@ -20,10 +20,9 @@ class MembershipsController < PrivateController
   end
 
   def update
-    # membership = Membership.find(params[:id])
     if @membership.update(membership_params)
       flash[:notice] = "#{@membership.user.full_name} was successfully updated"
-      redirect_to project_memberships_path(@membership.project_id)
+      redirect_to project_memberships_path(@project)
     else
       @membership = membership
       render :index
@@ -31,10 +30,9 @@ class MembershipsController < PrivateController
   end
 
   def destroy
-    membership = Membership.find(params[:id])
-    membership.destroy
+    @membership.destroy
     flash[:notice] = "#{membership.user.full_name} was successfully removed"
-    redirect_to project_memberships_path(membership.project_id)
+    redirect_to project_memberships_path(@project)
   end
 
   private
@@ -54,7 +52,7 @@ class MembershipsController < PrivateController
   def verify_min_one_owner
     @membership = Membership.find(params[:id])
     if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count <= 1
-      flash[:error] = "Projects must have at least one owner"
+      flash[:warning] = "Projects must have at least one owner"
       redirect_to project_memberships_path(@membership.project_id)
     end
   end
