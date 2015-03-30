@@ -4,7 +4,8 @@ class ProjectsController < PrivateController
   before_action :ensure_project_owner, only: [:edit, :destroy, :update]
 
   def index
-    @projects = current_user.projects.all
+    @projects = current_user.projects
+    @admin_projects = Project.all
   end
 
   def new

@@ -10,6 +10,6 @@
   %dd= @user.first_name.capitalize
   %dt Last Name
   %dd= @user.last_name.capitalize
-  - if current_user.admin || current_user == @user
+  - if current_user.admin || current_user.id == @user.id
     %dt Email
     %dd= mail_to @user.email.downcase
