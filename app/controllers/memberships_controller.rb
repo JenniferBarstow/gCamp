@@ -71,7 +71,7 @@ class MembershipsController < PrivateController
   end
 
   def ensure_membership
-    unless @project.has_membership?(current_user)
+    unless @project.has_membership?(current_user) || current_user.admin
       flash[:warning] = "You do not have access to that project"
       redirect_to projects_path
     end
