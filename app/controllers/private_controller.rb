@@ -20,7 +20,18 @@ class PrivateController < ApplicationController
   end
 
   def is_user_or_admin?(user)
-    user == current_user 
+    user == current_user || current_user.admin
+  end
+
+  def verify_admin_or_owner
+
+  end
+
+  def ensure_project_owner_or_admin
+    if !current_user.admin_or_owner?(@project)
+      flash[:warning] = 'You do not have access'
+      redirect_to projects_path
+    end
   end
 
 

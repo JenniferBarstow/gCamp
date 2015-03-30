@@ -13,8 +13,11 @@ class AuthenticationController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:notice] = "You have successfully signed in"
-      redirect_to projects_path
+      if session[:redirect_to] == nil
+        redirect_to projects_path
+      else
+        redirect_to session[:redirect_to], notice: "You have signed in successfully"
+      end
     else
       flash[:error] = "Email / Password combination is invalid"
       render :new
