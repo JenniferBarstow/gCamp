@@ -15,8 +15,10 @@ class AuthenticationController < ApplicationController
       session[:user_id] = @user.id
       if session[:redirect_to] == nil
         redirect_to projects_path
+        flash[:notice] = "You have successfully signed in"
       else
-        redirect_to session[:redirect_to], notice: "You have signed in successfully"
+        redirect_to session[:redirect_to]
+        flash[:notice] = "You have signed in successfully"
       end
     else
       flash[:error] = "Email / Password combination is invalid"

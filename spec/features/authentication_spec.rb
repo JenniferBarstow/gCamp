@@ -14,9 +14,7 @@ feature 'should be able to sign in' do
     within '.form' do
       click_on 'Sign In'
     end
-    within '.alert-success' do
       expect(page).to have_content 'You have successfully signed in'
-    end
   end
 
   scenario 'should see an error if signing in with incorrect data' do
