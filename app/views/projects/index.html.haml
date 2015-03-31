@@ -29,4 +29,4 @@
     %tbody
       - @tracker_projects.each do |project|
         %tr
-          %td= project[:name]
+          %td= link_to project[:name], tracker_project_path(project[:id],project_name: project[:name])
