@@ -1,3 +1,3 @@
-class TrackerProjectsController < PrivateContoller
+class TrackerProjectsController < PrivateController
 
 end
