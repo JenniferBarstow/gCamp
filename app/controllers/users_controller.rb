@@ -46,7 +46,7 @@ class UsersController < PrivateController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :pivotal_tracker_token)
   end
 
   def find_and_set_current_user
