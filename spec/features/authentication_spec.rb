@@ -11,6 +11,7 @@ feature 'should be able to sign in' do
     click_on 'Sign In'
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
+
     within '.form' do
       click_on 'Sign In'
     end
