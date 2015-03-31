@@ -4,7 +4,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 
 gem 'haml-rails', '~> 0.8.2'
 
-gem 'faraday', '~> 0.9.0'
+gem 'faraday', '~> 0.9.1'
 
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
