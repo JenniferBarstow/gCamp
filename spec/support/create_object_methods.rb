@@ -30,7 +30,7 @@
 
   def create_membership(options = {})
     Membership.create!({
-      role: 'Test role',
+      role: 'Member',
       project_id: create_project.id,
       user_id: create_user.id
     }.merge(options))

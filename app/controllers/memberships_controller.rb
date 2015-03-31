@@ -32,10 +32,10 @@ class MembershipsController < PrivateController
   end
 
   def destroy
-    if current_user.id == @membership.user_id
+    if current_user.id == @membership.user_id || current_user.admin
       @membership.destroy
       flash[:notice] = "#{@membership.user.full_name} was successfully removed"
-      redirect_to projects_path
+      redirect_to project_memberships_path(@project)
     else
       @membership.destroy
       redirect_to project_memberships_path(@project)
