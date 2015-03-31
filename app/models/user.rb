@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   def project_member_of(user)
     user.projects.map(&:users).flatten.include?(self)
   end
+
+  def private_token
+    self.pivotal_tracker_token[0..3] + ('*' * (self.pivotal_tracker_token.length - 4))
+  end
 end
