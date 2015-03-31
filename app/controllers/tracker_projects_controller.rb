@@ -1,0 +1,3 @@
+class TrackerProjectsController < PrivateContoller
+
+end
