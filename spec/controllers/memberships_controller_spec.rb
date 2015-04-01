@@ -9,8 +9,22 @@ require "rails_helper"
       session[:user_id] = @user.id
     end
 
+
     describe 'Permissions' do
-      it 'has at least one owner for membership' do
+      it 'redirects non_owner or non-admin from membership index to projects path' do
+        session.clear
+        user1 = create_user
+        session[:user_id] = user1.id
+
+        patch :update, project_id: @project.id,
+
+        id: @membership.id
+
+        expect(response).to redirect_to projects_path
+        expect(flash[:warning]).to eq "You do not have access to that project"
+      end
+
+      it 'has at least one user with the role of owner' do
 
         user1 = create_user( first_name: 'Steve',
           last_name: 'The Coolest',
